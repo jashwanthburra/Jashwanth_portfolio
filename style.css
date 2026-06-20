@@ -783,31 +783,83 @@ footer {
 
 
 /* Responsive Design */
+
+/* Hamburger button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+}
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
 @media (max-width: 992px) {
-    .nav-links {
-        display: none; /* Hide for smaller screens, implement hamburger menu if desired */
+    .hamburger {
+        display: flex;
     }
     .nav-container {
-        justify-content: center;
+        justify-content: space-between;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        z-index: 999;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 0;
+    }
+    .nav-links a {
+        display: block;
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .nav-links li:last-child a {
+        border-bottom: none;
     }
     .hero-content {
         flex-direction: column;
         text-align: center;
     }
-    .hero-text h1 {
-        font-size: 3em;
-    }
-    .hero-image {
-        order: 1;
-        margin-bottom: 30px;
-        width: 300px;
-        height: 300px;
+    .hero-text {
+        min-width: unset;
     }
     .hero-text h1 {
-        font-size: 3em;
+        font-size: 2.8em;
     }
     .hero-text .tagline {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
     .hero-links {
         justify-content: center;
@@ -827,19 +879,39 @@ footer {
     .container {
         padding: 0 15px;
     }
+    .hero-section {
+        padding: 70px 0;
+        min-height: unset;
+    }
+    .hero-text h1 {
+        font-size: 2.2em;
+    }
+    .hero-text .tagline {
+        font-size: 1.2em;
+    }
+    .hero-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .hero-links .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
 
     .timeline::before {
-        left: 20px; /* Move timeline line to left */
+        left: 20px;
     }
     .timeline-item {
         width: 100%;
-        padding-left: 60px; /* Make space for marker */
+        padding-left: 60px;
         padding-right: 15px;
         left: 0 !important;
         text-align: left !important;
     }
     .timeline-item::after {
-        left: 10px !important; /* Position marker correctly */
+        left: 10px !important;
     }
     .timeline-item:nth-child(odd)::after {
         left: 10px !important;
@@ -850,18 +922,10 @@ footer {
     .contact-grid {
         grid-template-columns: 1fr;
     }
-}
-
-@media (max-width: 480px) {
-    .hero-text h1 {
-        font-size: 2.5em;
-    }
-    .hero-text .tagline {
-        font-size: 1.2em;
-    }
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.9em;
+    .about-details {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
     }
     .project-grid {
         grid-template-columns: 1fr;
@@ -872,8 +936,44 @@ footer {
     .education-list {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 480px) {
+    nav .logo {
+        font-size: 1.3em;
+    }
+    .hero-text h1 {
+        font-size: 1.8em;
+    }
+    .hero-text .tagline {
+        font-size: 1em;
+    }
+    .hero-text .intro-statement {
+        font-size: 0.95em;
+    }
+    h2 {
+        font-size: 1.7em;
+    }
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+    .contact-details p {
+        font-size: 0.95em;
+        gap: 10px;
+    }
     .contact-details p i {
-        font-size: 1.5em;
-        width: 25px;
+        font-size: 1.3em;
+        width: 22px;
+    }
+    .contact-form-container {
+        padding: 20px 15px;
+    }
+    .achievements-list li {
+        padding-left: 40px;
+        font-size: 1em;
+    }
+    .section-description {
+        font-size: 1em;
     }
 }
